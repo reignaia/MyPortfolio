@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://reignaia.github.io/MyPortfolio/sitemao.xml
