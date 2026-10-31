@@ -283,7 +283,7 @@ function applyTheme(theme) {
   const themeLabel = $(".theme-label");
   const themeToggle = $("#themeToggle");
 
-  if (themeIcon) themeIcon.textContent = isDark ? "☀" : "⏾";
+  if (themeIcon) themeIcon.textContent = isDark ? "☀" : "☾";
   if (themeLabel) themeLabel.textContent = isDark ? "Light mode" : "Dark mode";
 
   if (themeToggle) {
