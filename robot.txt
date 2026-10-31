@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://reignaia.github.io/MyPortfolio/sitemao.xml
+Sitemap: https://reignaia.github.io/MyPortfolio/sitemap.xml
