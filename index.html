@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A pastel pink graphic design portfolio with selected works, skills, certificates, and contact information.">
+    <meta name="keywords" content="graphic design portfolio, Canva, Photoshop, GIMP, Figma, Miro">
+    <meta name="theme-color" content="#fff7fb">    
+    <title>My Portfolio</title>
+    <link rel="icon" type="image/png" href="images/MyPhoto/reignaiaLogo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Go to home">
+      <img class="brand-logo" src="images/MyPhoto/reignaiaLogo.png" alt="My Portfolio logo">
+      <span class="brand-name">
+        <span class="brand-highlight">Reignaia's</span>
+        <span class="brand-subtitle">Portfolio</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#cv">CV</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation"
+        aria-expanded="false">
+        ☰
+      </button>
+
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        aria-label="Switch color theme"
+        title="Switch color theme">
+        <span id="themeIcon">⏾</span>
+        <span class="theme-label">Dark mode</span>
+      </button>
+
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        
+        <h1>Hello, I'm <span class="accent">Kirsten Reigne Padua</span></h1>
+        <p class="hero-description">An aspiring graphic designer who loves turning sweet little ideas into beautiful visuals through soft colors, layout, and creative details with my own special touch.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#projects">View My Works <span>↗</span></a><a class="btn btn-secondary" href="#contact">Contact Me <span>→</span></a></div>
+        <div class="hero-note"><span class="note-line"></span>Designs filled with Sparkle and Grace</div>
+
+      </div>
+      <div class="hero-art">
+        <div class="hero-blob"></div>
+        <div class="profile-frame"><img src="images/MyPhoto/profile-photo.jpg" alt="Kirsten's photo"></div>
+        <span class="coquette-bow" aria-hidden="true">🎀</span><span class="sparkle sparkle-one">✧</span>
+      </div>
+    </section>
+
+    <section class="section-wrap featured-section">
+      <div class="section-heading"><div><h2>Featured <span class="accent">works</span></h2></div><a class="text-link" href="#projects">Explore all projects ↗</a></div>
+      <div class="featured-grid" id="featuredGrid"></div>
+    </section>
+
+    <section class="section-wrap about-section" id="about">
+      <div class="section-heading"><div><h2>A bit <span class="accent">about me</span></h2></div></div>
+      <div class="about-grid">
+        <div class="about-visual"><img src="images/MyPhoto/aboutMe-photo.jpg" alt="Kirsten's photo"></div>
+        <div class="about-copy"><h3>Hi, I'm Kirsten Reigne A. Padua!<BR> I make ideas bright & sparkly.</h3>
+          <p>I enjoy creating graphics that tells a story with clarity and heart. I love playing with colors, layouts, and details. And honestly, I just love adding little glitters and sparkles whenever it fits! For me, every design feels special and have a purpose. I'm  a constant learner who wants to explore new ideas and techniques. Open for criticism and collaboration, which will make me grow and create something even more beautiful with each project.</p>
+          <div class="about-facts about-facts-simple"><div><strong><div></div>🎓 BSIT (Current)</strong></div><div><strong>📍 Calamba City, Laguna</strong></div><div><strong> 🌺 Creative, kind, and always learning.</strong></div></div>
+        </div>
+      </div>
+      <div class="design-philosophy"><span class="philosophy-bow" aria-hidden="true">🎀</span><p class="eyebrow">MY DESIGN PHILOSOPHY</p><blockquote>“The best design isn't just something that appears perfect, but how it makes us connect, imagine, and feel.”</blockquote></div>
+    </section>
+
+    <section class="section-wrap skills-section" id="skills">
+      <div class="section-heading"><div><p class="eyebrow">TOOLS & STRENGTHS</p><h2>Skills that <span class="accent">grow</span></h2></div></div>
+      <div class="skills-layout">
+        <div class="panel technical-panel"><div class="panel-heading"><span class="panel-icon">⌘</span><div><h3>Technical skills</h3><p>Tools I use and continue to improve.</p></div></div><div id="technicalSkills" class="skill-list"></div></div>
+        <div class="panel soft-panel"><div class="panel-heading"><span class="panel-icon">♡</span><div><h3>Soft skills</h3><p>Skills linked to learning credentials.</p></div></div><div id="softSkills" class="soft-skill-list"></div></div>
+          <p class="fine-print">Note: Skill bars are self-assessed estimates.</p>
+      </div>
+    </section>
+
+    <section class="section-wrap cv-section" id="cv">
+      <div class="section-heading"><div><p class="eyebrow">LEARNING CREDENTIALS</p><h2>My background as a <span class="accent"> Graphic Designer</span></h2></div></div>
+      <div class="certificates-grid" id="certificatesGrid"></div>
+    <div class="curriculum-vitae">
+      <div class="cv-inline"><div><p class="eyebrow">CURRICULUM VITAE</p><h3>My CV</h3><p>View or download my latest CV in PDF format.</p></div><div class="cv-actions"><a class="btn btn-primary" href="pdf/Curriculum Vitae.pdf" download>Download CV <span>↓</span></a><a class="btn btn-secondary" href="pdf/Curriculum Vitae.pdf" target="_blank" rel="noopener">View CV Online ↗</a></div></div>
+    </div>
+    </section>
+
+    <section class="section-wrap projects-section" id="projects">
+      <div class="section-heading"><div><h2>Made with <span class="accent">intention</span></h2><p class="section-subtitle">Search by project title to find a design.</p></div></div>
+
+      <div class="project-tools">
+
+        <div class="search-row">
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input
+              type="search"
+              id="projectSearch"
+              placeholder="Search by project title..."
+              aria-label="Search projects by title"
+            >
+          </label>
+
+          <button
+            type="button"
+            class="filter-toggle"
+            id="filterToggle"
+            aria-expanded="false"
+            aria-controls="filterPanel"
+          >
+            <span>☷</span> Filters
+          </button>
+        </div>
+
+        <div class="filter-panel" id="filterPanel" hidden>
+
+          <div class="filter-group">
+            <label for="filterCategory">Category</label>
+            <select id="filterCategory">
+              <option value="">All Categories</option>
+              <option value="Graphic Design">Graphic Design</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filterYear">Year</label>
+            <select id="filterYear">
+              <option value="">All Years</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filterType">Project Type</label>
+            <select id="filterType">
+              <option value="">All Types</option>
+              <option value="Logo">Logo</option>
+              <option value="Poster">Poster</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filterTool">Tools</label>
+            <select id="filterTool">
+              <option value="">All Tools</option>
+              <option value="Canva">Canva</option>
+              <option value="GIMP">GIMP</option>
+              <option value="Photoshop">Photoshop</option>
+            </select>
+          </div>
+
+          <div class="filter-actions">
+            <button type="button" class="btn btn-secondary" id="clearFilters">
+              Clear Filters
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="results-count" id="resultsCount" aria-live="polite"></p>
+      <div class="projects-grid" id="projectsGrid"></div>
+      <div class="empty-state" id="emptyState" hidden><span>✿</span><h3>No projects found</h3><p>Try a different keyword or clear the filters.</p></div>
+    </section>
+
+    <section class="section-wrap contact-section" id="contact">
+      <div class="section-heading"><div><p class="eyebrow">LET'S CONNECT</p><h2>Have a project in <span class="accent">mind?</span></h2></div></div>
+      <div class="contact-grid"><div class="contact-copy"><h3>I'd love to hear from you.</h3><p>Have a question, opportunity, or idea to discuss? Send a message using the form or reach me through the contact details below.</p>
+        <a class="contact-detail" 
+           href="mailto:kirstreigne@gmail.com" 
+           aria-label="Send an Email">
+            <span>✉</span>
+            <span><small>EMAIL ME</small><strong>kirstreigne@gmail.com</strong></span>
+        </a>
+        <div 
+          class="contact-detail">
+          <span>⟟</span><span><small>BASED IN</small><strong>Calamba City, Laguna</strong></span>
+        </div>
+        <div class="social-links">
+        <a href="https://www.instagram.com/reignaia?" 
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Instagram profile">𝑖</a>
+        <a href="https://www.facebook.com/reignaia.padua" 
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Facebook profile">f</a>
+        <a href="https://www.linkedin.com/in/kirsten-reigne-padua-909911367"
+           target="_blank"
+           rel="noopener noreferrer"
+            aria-label="LinkedIn profile">in</a>
+        <a href="https://github.com/reignaia"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="GitHub profile">𑄝੭</a>
+
+        </div><p 
+          class="fine-print">Feel free to reach out!</p>
+        </div>
+
+        <form 
+          class="contact-form" 
+          id="contactForm"
+          action ="https://formspree.io/f/mwllnalb"
+          method ="POST"
+        >
+        <div class="form-row">
+          <label for="contactName">Name</label>
+          <input id="contactName" 
+                 name="name" 
+                 autocomplete="name" 
+                 required maxlength="100" 
+                 placeholder="Your name">
+        </div>
+        <div class="form-row">
+          <label for="contactEmail">Email</label>
+          <input 
+             id="contactEmail" 
+             name="email" 
+             type="email" 
+             autocomplete="email" 
+             required maxlength="150" 
+             placeholder="you@gmail.com">
+        </div>
+        <div class="form-row">
+          <label for="contactSubject">Subject</label>
+          <input id="contactSubject" 
+                 name="subject" 
+                 required maxlength="150" 
+                 placeholder="What would you like to discuss?">
+        </div>
+        <div class="form-row">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" 
+          name="message" rows="5" required maxlength="3000" placeholder="Write your message here..."></textarea>
+        </div>
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Leave this field empty</label>
+          <input id="website" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-buttons">
+          <button class="btn btn-primary" type="submit">
+            Send Message <span>↗</span>
+          </button>
+
+          <button class="btn btn-secondary" type="reset">
+            Clear Form <span>↺</span>
+          </button>
+        </div>      
+      </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" 
+       href="#home" 
+       aria-label="Go to home">
+    <img class="brand-logo" 
+         src="images/MyPhoto/reignaiaLogo.png" 
+         alt="Your logo">
+    </a>
+    <p>© 2026 • Kirsten Reigne A. Padua • My Design Portfolio • All rights reserved.</p>
+    
+    <div class="footer-links">
+
+    <a href="mailto:kirstenreigne@gmail.com"
+       aria-label="Send email"
+       title="Email">✉</a>
+
+    <a href="https://www.linkedin.com/in/kirsten-reigne-padua-909911367"
+       aria-label="LinkedIn"
+       title="LinkedIn">in</a>
+
+    <a href="https://github.com/reignaia"
+       aria-label="GitHub"
+       title="GitHub">𑄝</a>
+
+    </div>
+    
+    <a class="back-top" 
+       href="#home">Back to top ↑
+    </a>
+  </footer>
+
+  <dialog 
+    class="project-modal" 
+    id="projectModal" 
+    aria-labelledby="modalTitle">
+    <div class="modal-top">
+      <span class="modal-kicker">PROJECT DETAILS</span>
+      <button type="button"
+              class="modal-close" 
+              id="modalClose" 
+              aria-label="Close project details">×</button>
+    </div>
+    <div class="modal-content" 
+         id="modalContent">
+    </div>
+  </dialog>
+  <dialog class="image-modal" id="imageModal" aria-label="Expanded project image"><button class="modal-close image-close" id="imageClose" aria-label="Close enlarged image">×</button><img id="expandedImage" alt="Enlarged project preview"><p id="expandedCaption"></p></dialog>
+  <script src="script.js"></script>
+</body>
+</html>
