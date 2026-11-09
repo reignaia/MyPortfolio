@@ -385,3 +385,161 @@ filterToggle.addEventListener("click", () => {
   filterToggle.setAttribute("aria-expanded", String(!isExpanded));
   filterPanel.hidden = isExpanded;
 });
+
+
+/* =====================================
+   ANIMATED PINK GLITTER BACKGROUND
+===================================== */
+
+(() => {
+  const canvas = document.getElementById("glitterCanvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  if (reduceMotion.matches) return;
+
+  let width, height;
+  let particles = [];
+  let animationFrame;
+
+  const particleCount = 65;
+
+  function getColors() {
+    const darkMode =
+      document.documentElement.getAttribute("data-theme") === "dark" ||
+      document.body.getAttribute("data-theme") === "dark";
+
+    return darkMode
+      ? [
+          "rgba(255, 120, 184,",
+          "rgba(255, 190, 220,",
+          "rgba(255, 255, 255,"
+        ]
+      : [
+          "rgba(255, 150, 200,",
+          "rgba(255, 190, 220,",
+          "rgba(255, 255, 255,"
+        ];
+  }
+
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function createParticle(randomY = true) {
+    return {
+      x: Math.random() * width,
+      y: randomY ? Math.random() * height : height + 10,
+      size: Math.random() * 1.8 + 0.5,
+      speedY: Math.random() * 0.35 + 0.08,
+      speedX: (Math.random() - 0.5) * 0.25,
+      opacity: Math.random() * 0.55 + 0.15,
+      phase: Math.random() * Math.PI * 2,
+      twinkleSpeed: Math.random() * 0.035 + 0.01,
+      color: Math.floor(Math.random() * 3),
+      glint: Math.random() > 0.88
+    };
+  }
+
+  function initParticles() {
+    particles = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(createParticle());
+    }
+  }
+
+  function drawParticle(p, colors) {
+    const shimmer =
+      (Math.sin(p.phase) + 1) / 2;
+
+    const opacity =
+      p.opacity * (0.25 + shimmer * 0.75);
+
+    const color = colors[p.color];
+
+    ctx.save();
+
+    ctx.globalAlpha = opacity;
+
+    // Soft glowing center
+    ctx.shadowBlur = p.glint ? 12 : 6;
+    ctx.shadowColor = color + "0.9)";
+
+    ctx.fillStyle = color + "1)";
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Occasional delicate light glimmer
+    if (p.glint && shimmer > 0.8) {
+      ctx.strokeStyle = color + "0.7)";
+      ctx.lineWidth = 0.6;
+
+      const length = p.size * 4;
+
+      ctx.beginPath();
+      ctx.moveTo(p.x - length, p.y);
+      ctx.lineTo(p.x + length, p.y);
+      ctx.moveTo(p.x, p.y - length);
+      ctx.lineTo(p.x, p.y + length);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    const colors = getColors();
+
+    particles.forEach(p => {
+      p.phase += p.twinkleSpeed;
+      p.x += p.speedX + Math.sin(p.phase) * 0.12;
+      p.y -= p.speedY;
+
+      if (p.y < -10) {
+        Object.assign(p, createParticle(false));
+      }
+
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+
+      drawParticle(p, colors);
+    });
+
+    animationFrame = requestAnimationFrame(animate);
+  }
+
+  resizeCanvas();
+  initParticles();
+  animate();
+
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+  });
+
+  reduceMotion.addEventListener("change", event => {
+    if (event.matches) {
+      cancelAnimationFrame(animationFrame);
+      ctx.clearRect(0, 0, width, height);
+    } else {
+      initParticles();
+      animate();
+    }
+  });
+})();
