@@ -2599,3 +2599,35 @@ h3 {
     font-size: 0.6rem;
   }
 }
+
+
+/* =====================================
+   MAGICAL MOVING GLITTER BACKGROUND
+===================================== */
+
+#glitterCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Keep website content above the glitter */
+.site-header,
+section,
+footer,
+main,
+.modal,
+button,
+nav {
+  position: relative;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  #glitterCanvas {
+    display: none;
+  }
+}
