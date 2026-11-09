@@ -128,6 +128,25 @@ const certificates = [
 ]; // This part of the code defines an array of certificate objects, each containing details such as name, issuing organization, file path to the certificate PDF, and a list of skills associated with the certificate.
 
 const $ = (selector, root=document) => root.querySelector(selector);
+
+async function trackAnalytics(eventType, projectId = null) {
+  try {
+    await fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        event_type: eventType,
+        project_id: projectId
+      })
+    });
+  } catch (error) {
+    console.error("Analytics tracking failed:", error);
+  }
+}
+
+
 const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
 const projectImage = (src, alt) => `<img src="${escapeHTML(src)}" alt="${escapeHTML(alt)}" loading="lazy" onerror="this.onerror=null;this.src='images/MyProjects/BadgeLogo.png';">`;
 
@@ -225,6 +244,7 @@ function renderSkills(){
 function openProject(id){ // This function opens a modal displaying the details of a specific project based on its ID.
   const p=projects.find(item=>item.id===id); 
   if(!p)return;
+    trackAnalytics("project_view", p.id);
   const gallery=p.gallery?.length?p.gallery:[p.image,p.image,p.image];
   $("#modalContent").innerHTML=`<div class="modal-project-grid">
     <div class="modal-gallery">
@@ -373,6 +393,14 @@ renderProjects();
 renderSkills();
 setupSearch();
 setupTheme();
+
+const cvDownload = document.querySelector('.cv-actions a[download]');
+
+if (cvDownload) {
+  cvDownload.addEventListener("click", () => {
+    trackAnalytics("cv_download");
+  });
+}
 
 // Show and hide project filters
 const filterToggle = $("#filterToggle");
