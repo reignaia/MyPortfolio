@@ -2631,3 +2631,127 @@ nav {
     display: none;
   }
 }
+
+
+/* ========================================
+   EXPERIENCE & PRACTICAL PROJECTS
+======================================== */
+
+.experience-section {
+  position: relative;
+}
+
+.experience-timeline {
+  max-width: 850px;
+  margin: 15px auto 0;
+}
+
+.experience-card {
+  padding: 23px 25px;
+  margin-bottom: 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--pink);
+}
+
+.experience-card:last-child {
+  margin-bottom: 0;
+}
+
+.experience-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 7px;
+}
+
+.experience-card .timeline-date {
+  margin-bottom: 9px;
+}
+
+.experience-card .timeline-org {
+  margin-bottom: 10px;
+}
+
+.experience-type {
+  display: inline-block;
+  padding: 6px 11px;
+  margin-bottom: 13px;
+  border-radius: 30px;
+  background: var(--surface-2);
+  color: var(--pink-dark);
+  font-size: .7rem;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.experience-card > p:not(.timeline-date):not(.timeline-org) {
+  color: var(--muted);
+  font-size: .88rem;
+  margin-bottom: 15px;
+}
+
+.experience-highlights {
+  padding: 15px 17px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+}
+
+.experience-highlights strong {
+  display: block;
+  color: var(--pink-dark);
+  font-size: .8rem;
+  margin-bottom: 9px;
+}
+
+.experience-highlights ul {
+  margin: 0;
+  padding-left: 19px;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.experience-highlights li {
+  padding-left: 3px;
+  margin-bottom: 6px;
+}
+
+.experience-highlights li:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 720px) {
+
+  .experience-timeline {
+    margin-left: 8px;
+    padding-left: 24px;
+  }
+
+  .experience-card {
+    padding: 19px 16px;
+    margin-bottom: 20px;
+  }
+
+  .experience-card h3 {
+    font-size: 1.08rem;
+  }
+
+  .experience-type {
+    font-size: .66rem;
+  }
+
+  .experience-highlights {
+    padding: 13px;
+  }
+
+  .experience-highlights ul {
+    font-size: .78rem;
+  }
+}
