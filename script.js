@@ -2,6 +2,23 @@
 // This script handles the dynamic rendering of projects, skills, and certificates on the portfolio website. It also manages the theme toggle, search functionality, and modal interactions.
 
 const projects = [ 
+    { //Fruit Design
+    id: "fruit-design",
+    title: "Fruitful Design",
+    description: "A shimmering sugar apple inspired by a sugar apple fruit with raindrops the shimmers because of the sunlight.",
+    details: "A bumpy sugar apple design with a green and yellow color scheme. The glitter representing the shimmering raindrops from the sunlight, creating a dreamy and ethereal effect. The design is simple yet elegant, capturing the essence of the fruit in a whimsical way.",
+    tools: ["GIMP", "Photoshop"],
+    year: 2026,
+    category: "Graphic Design",
+    type: "Illustration",
+    image: "images/MyProjects/FruitfulDesign.jpg",
+    gallery: [
+      "images/MyProjects/ShimmeringSugarApple.jpg",
+      "images/MyProjects/FruitfulDesign.png",
+      "images/MyProjects/FruitfulDesign.jpg"],
+    before: "images/MyProjects/ShimmeringSugarApple.jpg",
+    after: "images/MyProjects/FruitfulDesign.jpg",
+    },
     { //Icon Design
     id:"icon-design",
     title:"Icon Design",
