@@ -441,11 +441,6 @@
     </p>
 
     <div class="status-row">
-      <span class="status">
-        <span class="status-dot"></span>
-        Connected to live analytics data
-      </span>
-
       <button class="small-btn" id="refreshButton" type="button">
         ↻ Refresh Data
       </button>
@@ -741,11 +736,6 @@
       }
 
       const now = new Date();
-
-      setText(
-        "lastUpdated",
-        "Last updated: " + now.toLocaleString()
-      );
 
     } catch (error) {
       console.error("Dashboard loading error:", error);
