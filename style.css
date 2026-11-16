@@ -778,38 +778,37 @@ h3 {
 
 .soft-skill-top {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
-  gap: 14px;
+  gap: 12px;
 }
 
-.soft-skill-top > div {
-  flex: 1;
-  min-width: 0;
+.soft-skill h4 {
+  margin: 0 0 4px;
+  font-size: .82rem;
+  line-height: 1.25;
+}
+
+.soft-skill p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .7rem;
+  line-height: 1.35;
 }
 
 .soft-skill .cert-link {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 8px 12px;
-  border: 1px solid var(--line);
-  border-radius: 50px;
-  background: var(--surface-2);
-  color: var(--pink-dark);
-  font-size: .68rem;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: all .25s ease;
+  margin-top: 3px;
+  font-size: .7rem;
 }
 
-.soft-skill .cert-link:hover {
-  background: var(--pink);
-  color: white;
-  border-color: var(--pink);
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  color: var(--pink-dark);
+  font-size: .75rem;
+  font-weight: 800;
 }
 
 .fine-print {
