@@ -449,7 +449,14 @@ h3 {
 }
 
 .hero-note {
-  display: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  color: var(--pink-dark);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .02em;
 }
 
 .eyebrow.showcase-label {
