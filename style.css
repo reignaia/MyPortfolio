@@ -1166,7 +1166,6 @@ h3 {
 
 /* 9. PROJECT DETAIL MODAL & IMAGE VIEWER
    --------------------------------------------------------- */
-.project-modal,
 .image-modal {
   max-height: 90vh;
   padding: 0;
@@ -1177,29 +1176,9 @@ h3 {
   box-shadow: 0 25px 100px rgba(0, 0, 0, .28);
 }
 
-.project-modal {
-  width: min(1000px, 92vw);
-}
-
-.project-modal::backdrop,
 .image-modal::backdrop {
   background: rgba(25, 10, 19, .65);
   backdrop-filter: blur(5px);
-}
-
-.modal-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 19px 23px;
-  border-bottom: 1px solid var(--line);
-}
-
-.modal-kicker {
-  color: var(--pink-dark);
-  font-size: .7rem;
-  font-weight: 800;
-  letter-spacing: .14em;
 }
 
 .modal-close {
@@ -1212,11 +1191,6 @@ h3 {
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
-}
-
-.modal-content {
-  padding: 23px;
-  overflow: auto;
 }
 
 .modal-project-grid {
@@ -2229,15 +2203,7 @@ h3 {
   .gallery-main-row .modal-thumbs img {
     min-height: 48px;
   }
-
-  .modal-content {
-    padding: 15px;
-  }
-
-  .modal-top {
-    padding: 14px 16px;
-  }
-
+   
   .compare-row {
     gap: 6px;
   }
