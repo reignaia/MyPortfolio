@@ -197,6 +197,7 @@ function renderFeatured(){
 
 
 function renderProjects() {
+
   const search = $("#projectSearch")?.value.trim().toLowerCase() || "";
   const year = $("#filterYear")?.value || "";
   const tool = $("#filterTool")?.value || "";
@@ -204,12 +205,24 @@ function renderProjects() {
   const type = $("#filterType")?.value || "";
 
   const filtered = projects.filter(p => {
-    const matchesSearch = p.title.toLowerCase().includes(search);
+    const projectTypes = Array.isArray(p.type) ? p.type : [p.type];
+
+    // Search across project name, technology, category, year, and project type
+    const searchableValues = [
+      p.title,
+      p.category,
+      p.year,
+      ...p.tools,
+      ...projectTypes
+    ];
+
+    const matchesSearch = searchableValues.some(value =>
+      String(value ?? "").toLowerCase().includes(search)
+    );
+
     const matchesYear = !year || String(p.year) === year;
     const matchesTool = !tool || p.tools.includes(tool);
     const matchesCategory = !category || p.category === category;
-
-    const projectTypes = Array.isArray(p.type) ? p.type : [p.type];
     const matchesType = !type || projectTypes.includes(type);
 
     return matchesSearch &&
@@ -218,6 +231,7 @@ function renderProjects() {
       matchesCategory &&
       matchesType;
   });
+
 
   $("#resultsCount").textContent =
     `Showing ${filtered.length} of ${projects.length} projects`;
@@ -355,6 +369,7 @@ function applyTheme(theme) {
 function updateThemeLabel(){const dark=document.documentElement.dataset.theme==="dark";$("#themeIcon").textContent=dark?"☀":"☾";$(".theme-label").textContent=dark?"Light mode":"Dark mode";$("#themeToggle").setAttribute("aria-label",dark?"Switch to light mode":"Switch to dark mode");}
 
 
+
 function setupSearch() {
   const filterIds = [
     "projectSearch",
@@ -364,23 +379,54 @@ function setupSearch() {
     "filterType"
   ];
 
-  // Automatically create year options from your project data
-  const yearSelect = $("#filterYear");
-
-  const years = [...new Set(projects.map(p => p.year))]
+  // Get unique values from the actual project data
+  const years = [...new Set(projects.map(p => String(p.year)))]
     .filter(Boolean)
     .sort((a, b) => Number(b) - Number(a));
 
-  years.forEach(year => {
-    const option = document.createElement("option");
-    option.value = year;
-    option.textContent = year;
-    yearSelect.appendChild(option);
-  });
+  const tools = [...new Set(projects.flatMap(p => p.tools))]
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
 
-  // Refresh projects whenever a filter changes
+  const categories = [...new Set(projects.map(p => p.category))]
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
+
+  const types = [...new Set(
+    projects.flatMap(p => Array.isArray(p.type) ? p.type : [p.type])
+  )]
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
+
+  // Populate dropdowns using the available project data
+  function populateFilter(id, values, defaultLabel) {
+    const select = $("#" + id);
+    if (!select) return;
+
+    select.innerHTML = "";
+
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = defaultLabel;
+    select.appendChild(defaultOption);
+
+    values.forEach(value => {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = value;
+      select.appendChild(option);
+    });
+  }
+
+  populateFilter("filterYear", years, "All Years");
+  populateFilter("filterTool", tools, "All Tools");
+  populateFilter("filterCategory", categories, "All Categories");
+  populateFilter("filterType", types, "All Types");
+
+  // Refresh projects whenever a search or filter changes
   filterIds.forEach(id => {
     const element = $("#" + id);
+
     if (element) {
       element.addEventListener("input", renderProjects);
       element.addEventListener("change", renderProjects);
@@ -388,13 +434,18 @@ function setupSearch() {
   });
 
   // Clear all filters
-  $("#clearFilters").addEventListener("click", () => {
-    filterIds.forEach(id => {
-      $("#" + id).value = "";
-    });
+  const clearButton = $("#clearFilters");
 
-    renderProjects();
-  });
+  if (clearButton) {
+    clearButton.addEventListener("click", () => {
+      filterIds.forEach(id => {
+        const element = $("#" + id);
+        if (element) element.value = "";
+      });
+
+      renderProjects();
+    });
+  }
 }
 
 document.addEventListener("click",event=>{
