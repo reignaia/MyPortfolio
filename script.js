@@ -279,33 +279,33 @@ function renderSkills(){
   $("#softSkills").innerHTML=certificates.map(c=>`<article class="soft-skill"><div class="soft-skill-top"><div><h4>${escapeHTML(c.skills.join(" & "))}</h4><p>${escapeHTML(c.name)} · ${escapeHTML(c.org)}</p></div></div><a class="cert-link" href="${escapeHTML(c.file)}" target="_blank" rel="noopener">View certificate PDF ↗</a></article>`).join("");
 }
 
-function openProject(id){ // This function opens a modal displaying the details of a specific project based on its ID.
-  const p=projects.find(item=>item.id===id); 
-  if(!p)return;
-    trackAnalytics("project_view", p.id);
-  const gallery=p.gallery?.length?p.gallery:[p.image,p.image,p.image];
-  $("#modalContent").innerHTML=`<div class="modal-project-grid">
-    <div class="modal-gallery">
-      <div class="gallery-main-row">
-        <button class="modal-main-image" data-image="${escapeHTML(gallery[0])}" data-caption="${escapeHTML(p.title)}">${projectImage(gallery[0],p.title+" main preview")}</button>
-        <div class="modal-thumbs">${gallery.slice(0,3).map((img,i)=>`<button class="${i===0?"selected":""}" data-gallery="${escapeHTML(img)}" data-project-caption="${escapeHTML(p.title)}" aria-label="Show preview ${i+1}">${projectImage(img,p.title+" preview "+(i+1))}</button>`).join("")}</div>
-      </div>
-      <div class="compare-row"><div class="compare-item"><button class="compare-image" data-image="${escapeHTML(p.before)}" data-caption="${escapeHTML(p.title+" — before sketch")}">${projectImage(p.before,"Before: sketch version")}</button><span>BEFORE · SKETCH</span></div><span class="compare-arrow" aria-hidden="true">➜</span><div class="compare-item"><button class="compare-image" data-image="${escapeHTML(p.after)}" data-caption="${escapeHTML(p.title+" — digital version")}">${projectImage(p.after,"After: digital version")}</button><span>AFTER · DIGITAL</span></div></div>
-    </div>
+// function openProject(id){ // This function opens a modal displaying the details of a specific project based on its ID.
+//   const p=projects.find(item=>item.id===id); 
+//   if(!p)return;
+//     trackAnalytics("project_view", p.id);
+//   const gallery=p.gallery?.length?p.gallery:[p.image,p.image,p.image];
+//   $("#modalContent").innerHTML=`<div class="modal-project-grid">
+//     <div class="modal-gallery">
+//       <div class="gallery-main-row">
+//         <button class="modal-main-image" data-image="${escapeHTML(gallery[0])}" data-caption="${escapeHTML(p.title)}">${projectImage(gallery[0],p.title+" main preview")}</button>
+//         <div class="modal-thumbs">${gallery.slice(0,3).map((img,i)=>`<button class="${i===0?"selected":""}" data-gallery="${escapeHTML(img)}" data-project-caption="${escapeHTML(p.title)}" aria-label="Show preview ${i+1}">${projectImage(img,p.title+" preview "+(i+1))}</button>`).join("")}</div>
+//       </div>
+//       <div class="compare-row"><div class="compare-item"><button class="compare-image" data-image="${escapeHTML(p.before)}" data-caption="${escapeHTML(p.title+" — before sketch")}">${projectImage(p.before,"Before: sketch version")}</button><span>BEFORE · SKETCH</span></div><span class="compare-arrow" aria-hidden="true">➜</span><div class="compare-item"><button class="compare-image" data-image="${escapeHTML(p.after)}" data-caption="${escapeHTML(p.title+" — digital version")}">${projectImage(p.after,"After: digital version")}</button><span>AFTER · DIGITAL</span></div></div>
+//     </div>
 
-    <div class="modal-details">
-      <span class="modal-category">
-        ${escapeHTML(p.category)}
-      </span>
+//     <div class="modal-details">
+//       <span class="modal-category">
+//         ${escapeHTML(p.category)}
+//       </span>
 
-      <h2 id="modalTitle">${escapeHTML(p.title)}</h2>
-      <p>${escapeHTML(p.description)}</p>
-      ${p.details ? `<h3>About the Design</h3><p>${escapeHTML(p.details)}</p>` : ""}
-      <h3>Tools used:</h3>
-      <div class="tag-row">${p.tools.map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join("")}</div></div>
-  </div>`;
-  const modal=$("#projectModal"); if(!modal.open)modal.showModal();
-}
+//       <h2 id="modalTitle">${escapeHTML(p.title)}</h2>
+//       <p>${escapeHTML(p.description)}</p>
+//       ${p.details ? `<h3>About the Design</h3><p>${escapeHTML(p.details)}</p>` : ""}
+//       <h3>Tools used:</h3>
+//       <div class="tag-row">${p.tools.map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join("")}</div></div>
+//   </div>`;
+//   const modal=$("#projectModal"); if(!modal.open)modal.showModal();
+// }
 
 function openImage(src,caption){$("#expandedImage").src=src;$("#expandedImage").alt=caption||"Expanded image";$("#expandedCaption").textContent=caption||"";$("#imageModal").showModal();}
 
@@ -398,28 +398,28 @@ function setupSearch() {
 }
 
 document.addEventListener("click",event=>{
-  const project=event.target.closest("[data-project]");
-  if(project){
-    event.preventDefault();
-    openProject(project.dataset.project);
-    return;
-  }
+  // const project=event.target.closest("[data-project]");
+  // if(project){
+  //   event.preventDefault();
+  //   openProject(project.dataset.project);
+  //   return;
+  // }
 
-  const gallery=event.target.closest("[data-gallery]");
-  if(gallery){
-    const src=gallery.dataset.gallery;
-    const main=$(".modal-main-image");
-    main.dataset.image=src;
-    main.dataset.caption=gallery.dataset.projectCaption;
-    main.innerHTML=projectImage(src,gallery.dataset.projectCaption+" selected image");
-    $(".modal-thumbs .selected")?.classList.remove("selected");
-    gallery.classList.add("selected");
-    return;
-  }
+  // const gallery=event.target.closest("[data-gallery]");
+  // if(gallery){
+  //   const src=gallery.dataset.gallery;
+  //   const main=$(".modal-main-image");
+  //   main.dataset.image=src;
+  //   main.dataset.caption=gallery.dataset.projectCaption;
+  //   main.innerHTML=projectImage(src,gallery.dataset.projectCaption+" selected image");
+  //   $(".modal-thumbs .selected")?.classList.remove("selected");
+  //   gallery.classList.add("selected");
+  //   return;
+  // }
   const image=event.target.closest("[data-image]");if(image){openImage(image.dataset.image,image.dataset.caption||image.dataset.projectCaption);return;}
 });
-$("#modalClose").addEventListener("click",()=>$("#projectModal").close());
-$("#projectModal").addEventListener("click",event=>{if(event.target===$("#projectModal"))$("#projectModal").close();});
+// $("#modalClose").addEventListener("click",()=>$("#projectModal").close());
+// $("#projectModal").addEventListener("click",event=>{if(event.target===$("#projectModal"))$("#projectModal").close();});
 $("#imageClose").addEventListener("click",()=>$("#imageModal").close());
 $("#imageModal").addEventListener("click",event=>{if(event.target===$("#imageModal"))$("#imageModal").close();});
 $("#menuToggle").addEventListener("click",()=>{const open=$("#navLinks").classList.toggle("open");$("#menuToggle").setAttribute("aria-expanded",String(open));$("#menuToggle").textContent=open?"×":"☰";});
