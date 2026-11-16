@@ -18,6 +18,29 @@ function projectAsset(path) {
   return "../../" + path;
 }
 
+function projectWebpAsset(path) {
+  return projectAsset(path)
+    .replace("../../images/", "../../images-optimized/")
+    + ".webp";
+}
+
+function projectPicture(path, alt, loading = "lazy") {
+  const original = projectAsset(path);
+  const optimized = projectWebpAsset(path);
+
+  return `
+    <picture>
+      <source srcset="${escapeProjectHTML(optimized)}" type="image/webp">
+      <img
+        src="${escapeProjectHTML(original)}"
+        alt="${escapeProjectHTML(alt)}"
+        loading="${loading}"
+        decoding="async"
+      >
+    </picture>
+  `;
+}
+
 function trackProjectView(id) {
   fetch("/api/track", {
     method: "POST",
@@ -58,9 +81,13 @@ if (!project) {
         <div class="gallery-main-row">
           <button class="modal-main-image"
             data-image="${projectAsset(gallery[0])}"
+            data-webp="${projectWebpAsset(gallery[0])}"
             data-caption="${escapeProjectHTML(project.title)}">
-            <img src="${projectAsset(gallery[0])}"
-              alt="${escapeProjectHTML(project.title)} main preview">
+            ${projectPicture(
+              gallery[0],
+              project.title + " main preview",
+              "eager"
+            )}
           </button>
 
           <div class="modal-thumbs">
@@ -68,10 +95,13 @@ if (!project) {
               <button
                 class="${index === 0 ? "selected" : ""}"
                 data-gallery="${projectAsset(image)}"
+                data-gallery-webp="${projectWebpAsset(image)}"
                 data-caption="${escapeProjectHTML(project.title)} preview ${index + 1}"
                 aria-label="Show project image ${index + 1}">
-                <img src="${projectAsset(image)}"
-                  alt="${escapeProjectHTML(project.title)} preview ${index + 1}">
+                ${projectPicture(
+                  image,
+                  project.title + " preview " + (index + 1)
+                )}
               </button>
             `).join("")}
           </div>
@@ -82,7 +112,7 @@ if (!project) {
             <button class="compare-image"
               data-image="${projectAsset(project.before)}"
               data-caption="${escapeProjectHTML(project.title)} — Before">
-              <img src="${projectAsset(project.before)}" alt="Before design">
+              ${projectPicture(project.before, "Before design")}
             </button>
             <span>BEFORE</span>
           </div>
@@ -93,7 +123,7 @@ if (!project) {
             <button class="compare-image"
               data-image="${projectAsset(project.after)}"
               data-caption="${escapeProjectHTML(project.title)} — After">
-              <img src="${projectAsset(project.after)}" alt="Completed design">
+              ${projectPicture(project.after, "Completed design")}
             </button>
             <span>AFTER</span>
           </div>
@@ -158,13 +188,17 @@ document.addEventListener("click", event => {
   if (thumbnail) {
     const mainImage = document.querySelector(".modal-main-image");
     const imagePath = thumbnail.dataset.gallery;
+    const webpPath = thumbnail.dataset.galleryWebp;
     const caption = thumbnail.dataset.caption;
 
     mainImage.dataset.image = imagePath;
+    mainImage.dataset.webp = webpPath;
     mainImage.dataset.caption = caption;
-    mainImage.innerHTML = `
-      <img src="${imagePath}" alt="${escapeProjectHTML(caption)}">
-    `;
+
+    mainImage.innerHTML = projectPicture(
+      imagePath.replace("../../", ""),
+      caption
+    );
 
     document.querySelectorAll(".modal-thumbs button")
       .forEach(button => button.classList.remove("selected"));
@@ -177,7 +211,15 @@ document.addEventListener("click", event => {
 
   if (imageButton) {
     const imageModal = document.getElementById("imageModal");
-    document.getElementById("expandedImage").src = imageButton.dataset.image;
+    const expandedImage = document.getElementById("expandedImage");
+
+    expandedImage.onerror = function () {
+      this.onerror = null;
+      this.src = imageButton.dataset.image;
+    };
+
+    expandedImage.src = imageButton.dataset.webp || imageButton.dataset.image;
+    
     document.getElementById("expandedImage").alt =
       imageButton.dataset.caption || "Expanded project image";
     document.getElementById("expandedCaption").textContent =

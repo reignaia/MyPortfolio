@@ -186,7 +186,24 @@ async function trackAnalytics(eventType, projectId = null) {
 
 
 const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-const projectImage = (src, alt) => `<img src="${escapeHTML(src)}" alt="${escapeHTML(alt)}" loading="lazy" onerror="this.onerror=null;this.src='images/MyProjects/BadgeLogo.png';">`;
+const projectImage = (src, alt) => {
+  const webpSrc = src
+    .replace(/^images\//, "images-optimized/")
+    + ".webp";
+
+  return `
+    <picture>
+      <source srcset="${escapeHTML(webpSrc)}" type="image/webp">
+      <img
+        src="${escapeHTML(src)}"
+        alt="${escapeHTML(alt)}"
+        loading="lazy"
+        decoding="async"
+        onerror="this.onerror=null;this.src='images/MyProjects/BadgeLogo.png';"
+      >
+    </picture>
+  `;
+};
 
 function renderFeatured(){
   $("#featuredGrid").innerHTML = projects.filter(p=>p.featured).map(p=>`<article class="featured-card">
