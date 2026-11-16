@@ -411,13 +411,11 @@ renderSkills();
 setupSearch();
 setupTheme();
 
-const cvDownload = document.querySelector('.cv-actions a[download]');
-
-if (cvDownload) {
-  cvDownload.addEventListener("click", () => {
+document.querySelectorAll('a[download]').forEach(link => {
+  link.addEventListener("click", () => {
     trackAnalytics("cv_download");
   });
-}
+});
 
 // Show and hide project filters
 const filterToggle = $("#filterToggle");
