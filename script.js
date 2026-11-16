@@ -4,7 +4,7 @@
 const projects = [ 
     { //Fruit Design
     id: "fruit-design",
-    page: "/projects/fruitful-design/fd.html",
+    page: "/projects/fruitful-design/",
     title: "Fruitful Design",
     description: "A shimmering sugar apple inspired by a sugar apple fruit with raindrops the shimmers because of the sunlight.",
     details: "A bumpy sugar apple design with a green and yellow color scheme. The glitter representing the shimmering raindrops from the sunlight, creating a dreamy and ethereal effect. The design is simple yet elegant, capturing the essence of the fruit in a whimsical way.",
@@ -24,7 +24,7 @@ const projects = [
   },
   { //Icon Design
     id:"icon-design",
-    page: "/projects/icon-design/id.html",
+    page: "/projects/icon-design/",
     title:"Icon Design",
     description:"An Icon that emits a soft pink glow and coquettish appearance.",
     details: "A pure and gentle beauty. Signature pale pink glitter bow with soft blush shading, and two sparkling stars in the corner. Simple, dreamy, and instantly recognizable as my work. Perfect as a subtle mark or decorative detail.",
@@ -45,7 +45,7 @@ const projects = [
   },
   { //Badge Logo Design
     id:"badge-logo",
-    page: "/projects/badge-logo/bl.html",
+    page: "/projects/badge-logo/",
     title:"Badge Logo Design",
     description:"A badge logo design that represents or symbolizes my identity as a graphic designer.",
     details: "A glittering hot pink splash frame wrap around a soft pink bow, dusted with shimmer with a twinkling star sparkles. Matching my coquette charm. SparKirst that sits sweetly below, with matching pink and purple colors. Added around by gold and pink glitter dots to give extra magic and sparkle. A design that is both elegant and playful, with a touch of whimsy.",
@@ -66,7 +66,7 @@ const projects = [
   },
   { //Horizontal Logo Design
     id:"horizontal-logo",
-    page: "/projects/horizontal-logo/hl.html",
+    page: "/projects/horizontal-logo/",
     title:"Horizontal Logo design",
     description:"A horizontal logo design that represents or symbolizes my identity as a graphic designer.",
     details: "Clean and polished creamy panel edged in glowing gold holds the delicate glitter bow, with two little star sparkles catching the light above. SparKirst is bold and bright, perfectly balanced beside the bow. It feels refined, memorable, and ready to shine anywhere.",
@@ -86,7 +86,7 @@ const projects = [
   },
   { //Vertical Logo Design
     id:"vertical-logo",
-    page: "/projects/vertical-logo/vl.html",
+    page: "/projects/vertical-logo/",
     title:"Vertical Logo Design",
     description:"A vertical logo design with a bright glow that represents or symbolizes my identity as a graphic designer.",
     details: "Warm and radiant. Glittering bow is framed by a soft golden-yellow glow that makes it feel alive and magical. Below, SparKirst stands out with a gentle shadow, giving it depth and presence. It feels welcoming, bright, and full of warmth.",
@@ -107,7 +107,7 @@ const projects = [
   },
   { //Brew Haven Logo Design
     id:"brew-haven",
-    page: "/projects/brew-haven/bh.html",
+    page: "/projects/brew-haven/",
     title:"Brew Haven Logo Design",
     description:"A logo especially designed for brew haven coffee shop. It has a touch of their new pumpkin spice latte. A design that gives a cozy and comfortable feel.",
     details: "Inviting and cozy. A charming illustration of a mug holding a creamy pumpkin spice latte, complete with swirling steam and delicate patterns on the handle. Soft cloud-like lettering spells Brew Haven above, while inviting text reads: A cozy spot to try our new Pumpkin Spice Latte!  with fresh leaves and coffee beans, it feels like a warm hug in a cup.",
@@ -126,7 +126,7 @@ const projects = [
   },
   { //Reigna Poster Design
     id:"poster-design",
-    page: "/projects/poster-design/pd.html",
+    page: "/projects/poster-design/",
     title:"Reigna Poster Design",
     description:"A made up clothing brand poster design. It features a modern aesthetic and bold typography.",
     details: "The name Reigna from  REIGN, embodying confidence, presence, and the grace of leading with one’s own beauty. The tagline BLUSH THAT REIGNS IN EVERY DAMSEL weaves soft pink warmth and feminine sweetness with the quiet strength and poise every woman holds. Designed in dreamy blush tones and delicate script, this collection channels coquette elegance that offers timeless pieces that let you feel beautifully soft and confidently royal, all at once.",
