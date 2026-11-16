@@ -1,8 +1,37 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://reignaia.github.io/MyPortfolio/</loc>
+    <loc>https://reignaia-portfolio.vercel.app/</loc>
+  </url>
+
+  <url>
+    <loc>https://reignaia-portfolio.vercel.app/projects/fruitful-design/</loc>
+  </url>
+
+  <url>
+    <loc>https://reignaia-portfolio.vercel.app/projects/icon-design/</loc>
+  </url>
+
+  <url>
+    <loc>https://reignaia-portfolio.vercel.app/projects/badge-logo/</loc>
+  </url>
+
+  <url>
+    <loc>https://reignaia-portfolio.vercel.app/projects/horizontal-logo/</loc>
+  </url>
+
+  <url>
+    <loc>https://reignaia-portfolio.vercel.app/projects/vertical-logo/</loc>
+  </url>
+
+  <url>
+    <loc>https://reignaia-portfolio.vercel.app/projects/brew-haven/</loc>
+  </url>
+
+  <url>
+    <loc>https://reignaia-portfolio.vercel.app/projects/poster-design/</loc>
   </url>
 
 </urlset>
